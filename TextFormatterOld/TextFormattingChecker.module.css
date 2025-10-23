@@ -1,0 +1,344 @@
+.container {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  grid-area: title;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title h1 {
+  font-family: var(--font-inter);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 82px;
+  color: var(--text-color);
+  margin: 0;
+  text-align: center;
+}
+
+.title h4 {
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 46px;
+  color: var(--text-color);
+  margin: 0;
+  text-align: center;
+}
+
+.textFormattingContainer {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 32px;
+  min-height: 0;
+}
+
+.textAreaCard {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  box-sizing: border-box;
+  position: relative;
+
+  background: white;
+  border-radius: 16px;
+  overflow-y: auto;
+}
+
+.textAreaCard > div {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.textArea {
+  height: 100%;
+  width: 100%;
+  border: 0;
+  padding: 32px;
+  outline: none;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 46px;
+  color: var(--text-color);
+}
+
+.highlightLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  padding: 32px;
+  overflow: hidden;
+  color: transparent;
+  z-index: 2;
+  box-sizing: border-box;
+  
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 48px;
+  pointer-events: none;
+  white-space: pre-wrap;
+}
+
+.errorText {
+  background: #fcd34d;
+  border-bottom: 2px solid #f59e0b;
+  resize: vertical;
+
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 46px;
+  pointer-events: none;
+  white-space: pre-wrap;
+}
+
+.newLineErrorSpan {
+  border: 2px solid #f59e0b;
+}
+
+.resultsPane {
+  width: 20%;
+  min-width: 250px;
+  flex-shrink: 0;
+
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  background: white;
+  border-radius: 16px;
+  overflow: auto;
+}
+
+.resultsTitle {
+  padding: 24px;
+  padding-bottom: 0;
+
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.errorsContainer {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: flex-start;
+  gap: 16px;
+  height: fit-content;
+}
+
+.errorCard {
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid var(--accent-color);
+  background: white;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 8px 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.errorMessage {
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.errorPosition {
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.errorCTA {
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--accent-color);
+  margin: 0;
+}
+
+.errorCard:hover {
+  background: var(--accent-hover-color);
+}
+
+.errorCard:hover .errorMessage, .errorCard:hover .errorPosition {
+  color: var(--accent-text-color);
+}
+
+.errorCard:hover .errorCTA {
+  color: var(--accent-text-color);
+}
+
+.noErrorResults {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.noErrorResults h5 {
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  /* line-height: 46px; */
+  color: var(--text-color);
+  margin: 0;
+  text-align: center;
+}
+
+.toolTipCard {
+  width: fit-content;
+  height: fit-content;
+  padding: 16px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.1s ease-in-out;
+  z-index: 3;
+  border: 1px solid pink;
+  pointer-events: none;
+
+  opacity: 0;
+}
+
+.activeErrorCard {
+  background: pink;
+}
+
+.activeChecksRow {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  gap: 8px;
+}
+
+.activeChecksRow label {
+  font-family: var(--font-openSans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.activeChecksButtonRow {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.activeChecksButtonRow button {
+  border: none;
+  background: var(--accent-color);
+  color: var(--accent-text-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s ease-in-out background;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+
+.activeChecksButtonRow button:hover {
+  background: var(--accent-hover-color);
+}
+
+.activeChecksButtonRow button[data-isActive=true] {
+  background: var(--accent-color);
+}
+
+.activeChecksButtonRow button[data-isActive=false] {
+  background: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+}
+
+@media (max-width: 1050px) {
+  .container {
+    padding: 32px;
+  }
+
+  .textFormattingContainer {
+    min-height: 100vh;
+    height: fit-content;
+    flex-direction: column;
+  }
+
+  .activeChecksRow {
+    padding-bottom: 0;
+  }
+  
+  .activeChecksButtonRow {
+    flex-wrap: wrap;
+  }
+
+  .resultsPane {
+    order: 1;
+    width: 100%;
+  }
+
+  .textAreaCard {
+    order: 2;
+  }
+}

@@ -1,0 +1,242 @@
+
+
+.dateRangePickerContainer {
+  width: fit-content;
+  height: auto;
+  position: relative;
+}
+
+.dateRangeField {
+  width: fit-content;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 6px 12px;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  border-radius: 4px;
+  border: 1px solid var(--colors_GRAY_300);
+  background: var(--colors_WHITE);
+  overflow: hidden;
+
+  color: var(--colors_GRAY_600);
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: Roboto, sans-serif;
+  font-size: var(--textSizes_XS);
+  font-style: normal;
+  font-weight: var(--textWeights_NORMAL);
+  line-height: 20px;
+
+  transition: all 0.2s ease-in-out;
+  transition: border-color 0s ease-in-out;
+
+  anchor-name: --dateRangeFieldOld;
+}
+
+.dateRangeField[data-has-selected-value=false]:has(~ .datePickerDropdownPanel) {
+  border-color: var(--colors_BLUE_400);
+  box-shadow: inset 0 0 0 1px var(--colors_BLUE_400);
+}
+
+.dateRangeField[data-has-selected-value=true] {
+  border-color: var(--colors_BLUE_400);
+  box-shadow: inset 0 0 0 1px var(--colors_BLUE_400);
+  color: var(--colors_BLUE_700);
+  background: var(--colors_BLUE_100);
+  font-weight: var(--textWeights_MEDIUM);
+}
+
+.dateRangeField[data-has-selected-value=true] svg path {
+  fill: var(--colors_BLUE_700);
+}
+
+.clearValueButton {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 0 0 10px;
+  margin: 0;
+  border: none;
+  background: transparent;
+}
+
+.clearValueButton svg {
+  position: relative;
+  left: 2px;
+}
+
+.closeButtonDivider {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 34px;
+  width: 1px;
+  height: 100%;
+  background: var(--colors_BLUE_700);
+}
+
+.datePickerDropdownPanel {
+  z-index: 10;
+  position: absolute;
+
+  width: 224px;
+  height: fit-content;
+  
+  display: flex;
+  padding: 0px 14px 14px 14px;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+
+  border-radius: 0px 0px 3px 3px;
+  background: var(--colors_WHITE);
+  box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.25);
+
+  position-anchor: --dateRangeFieldOld;
+  top: anchor(bottom);
+  left: anchor(left);
+
+  overflow: hidden;
+}
+
+.datePickerDropdownPanel .monthRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0 4px 0;
+}
+
+.datePickerDropdownPanel .monthRow button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.datePickerDropdownPanel .monthRow span {
+  color: var(--colors_GRAY_700);
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: var(--textSizes_XS);
+  font-style: normal;
+  font-weight: var(--textWeights_BOLD);
+  line-height: 24px;
+}
+
+.datePickerDropdownPanel .daysOfWeek {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.datePickerDropdownPanel .daysOfWeek span {
+  display: flex;
+  height: 24px;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 0 0;
+
+  color: var(--colors_GRAY_600);
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: var(--textSizes_XS);
+  font-style: normal;
+  font-weight: var(--textWeights_MEDIUM);
+  line-height: 20px;
+}
+
+.datePickerDropdownPanel .daysOfMonth {
+  width: 100%;
+  height: fit-content;
+  background: #F1F5F980;
+
+  display: grid;
+  row-gap: 8px;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.datePickerDropdownPanel .daysOfMonth button {
+  box-sizing: border-box;
+  position: relative;
+  padding: 4px 6px;
+  margin: 0;
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 28px;
+  height: 28px;
+
+  color: var(--colors_GRAY_700);
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: var(--textSizes_XS);
+  font-style: normal;
+  font-weight: var(--textWeights_NORMAL);
+  line-height: 20px;
+  transition: background 0.2s ease-in-out;
+}
+
+.datePickerDropdownPanel .daysOfMonth .outside-current-month {
+  color: var(--colors_GRAY_300);
+}
+
+.datePickerDropdownPanel .daysOfMonth .todays-date {
+  color: var(--colors_BLUE_700);
+  font-weight: var(--textWeights_BOLD);
+}
+
+.datePickerDropdownPanel .daysOfMonth .todays-date::after {
+  content: '';
+  position: absolute;
+  margin: auto;
+  bottom: 3px;
+
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--colors_BLUE_700);
+}
+
+.datePickerDropdownPanel .daysOfMonth button:hover,
+.datePickerDropdownPanel .daysOfMonth .selected-start-date,
+.datePickerDropdownPanel .daysOfMonth .selected-end-date {
+  background: var(--colors_BLUE_100);
+  border: 1px solid var(--colors_BLUE_700);
+  color: var(--colors_BLUE_700);
+  border-radius: 2px;
+  font-weight: var(--textWeights_BOLD);
+}
+
+.datePickerDropdownPanel .daysOfMonth .date-between-start-end-date {
+  background: var(--colors_BLUE_100);
+}
+
+.datePickerDropdownPanel .daysOfMonth .date-after-start-no-end-date:hover {
+  background: var(--colors_WHITE);
+  border: 1px solid var(--colors_BLUE_700);
+  color: var(--colors_BLUE_700);
+  border-radius: 2px;
+  font-weight: var(--textWeights_BOLD);
+}
+
+.datePickerDropdownPanel .daysOfMonth .date-after-start-no-end-date:hover ~ .date-after-start-no-end-date {
+  background-color: #F1F5F980;
+}
